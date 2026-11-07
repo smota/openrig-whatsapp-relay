@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "paths": { "@openrig-whatsapp-relay/core": ["../core/src/index.ts"] }
+  },
+  "include": ["src"]
+}

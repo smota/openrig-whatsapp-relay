@@ -1,0 +1,35 @@
+{
+  "name": "@openrig-whatsapp-relay/transport-baileys",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Baileys transport for @openrig-whatsapp-relay/core, over a socket the host application owns.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@openrig-whatsapp-relay/core": "^0.1.0",
+    "@whiskeysockets/baileys": ">=6.7.16 <6.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@whiskeysockets/baileys": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^22 || ^24"
+  }
+}

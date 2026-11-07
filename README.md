@@ -70,6 +70,23 @@ Tokens and URLs come from the binding's secrets file (`OPENRIG_RELAY_URL`,
 embedding process's job. Use separate outbound and inbound tokens, bind the listener to loopback
 only, and never log either token.
 
+## `@openrig-whatsapp-relay/transport-baileys`
+
+Runs the relay over a Baileys session **you own**. Baileys is a peer dependency (tested with
+`@whiskeysockets/baileys` 6.7.24, range `>=6.7.16 <6.8.0`, optional because the package only uses a
+structural `BaileysSocketLike`); core is a peer too.
+
+In scope:
+
+- `createBaileysTransport({ socket, resolveChat, isConnected })`: core's `Transport` over your socket. `sent` only with a returned message id; an error that is not clearly a pre-send connection failure is `failed` ("check the chat"), never retried.
+- `DeliveryMachine` / `runDelivery`: one message's state machine (`pending`, `sending`, `retry_wait`, `sent`, `failed`, `unknown`) with bounded backoff, intent recorded before each attempt, outcome recorded after.
+- `classifyReply`, `authorizeSender`, `normalizeIdentity`: quoted-reply routing for relay messages. Owner phone-JID and LID forms, wrong chat or sender refused, media refused, fail closed on a malformed owner list.
+- `parseOptionReply`: digits, or number words (en, pt, es, opt-in per locale) only as the whole reply.
+- `redactText`, `installLibsignalLogRedaction`: log hygiene for JIDs, phones, bearer tokens and Signal key dumps.
+- `examples/wire.ts`: core plus this package on a socket.
+
+Left to the host application: creating, pairing (QR), persisting and reconnecting the socket and its auth directory; group discovery; message parsing from `messages.upsert`; media, voice and audio; any outbox, approval or work-routing logic; mirroring state to your own systems; secrets handling; which chats and people exist.
+
 ## Development
 
 ```

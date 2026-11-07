@@ -5,12 +5,13 @@
   "license": "Apache-2.0",
   "type": "module",
   "workspaces": [
-    "packages/core"
+    "packages/core",
+    "packages/transport-baileys"
   ],
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build": "npm run build -w @openrig-whatsapp-relay/core && npm run build -w @openrig-whatsapp-relay/transport-baileys",
     "test": "vitest run",
-    "check": "tsc --noEmit --project packages/core/tsconfig.json && tsc --noEmit --project packages/core/tsconfig.test.json"
+    "check": "tsc --noEmit --project packages/core/tsconfig.json && tsc --noEmit --project packages/core/tsconfig.test.json && tsc --noEmit --project packages/transport-baileys/tsconfig.check.json && tsc --noEmit --project packages/transport-baileys/tsconfig.test.json"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
