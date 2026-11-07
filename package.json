@@ -1,0 +1,24 @@
+{
+  "name": "openrig-whatsapp-relay",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/core"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "vitest run",
+    "check": "tsc --noEmit --project packages/core/tsconfig.json && tsc --noEmit --project packages/core/tsconfig.test.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": "^22 || ^24",
+    "npm": ">=10"
+  }
+}
