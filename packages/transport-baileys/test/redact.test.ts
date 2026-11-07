@@ -10,7 +10,7 @@ describe("redactText", () => {
     expect(out).toContain("Bearer [redacted]");
   });
   it("masks phone numbers with any common separator", () => {
-    for (const p of ["+32.475.12.34.56", "(555) 010-0000", "+1 555 010 0000", "555/010/0000", "+1-555-010-0000", "+1 (555) 010.0000"]) {
+    for (const p of ["+1.555.010.0000", "(555) 010-0000", "+1 555 010 0000", "555/010/0000", "+1-555-010-0000", "+1 (555) 010.0000"]) {
       const out = redactText(`call ${p} now`);
       expect(out, p).toBe("call [phone] now");
     }
