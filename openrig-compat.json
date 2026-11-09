@@ -1,0 +1,17 @@
+{
+  "$comment": "Only the exact pinned OpenRig revision is claimed. Revalidate the contract and fixture before widening this range.",
+  "repoVersion": "0.1.0",
+  "gatewayRelayContractVersion": 1,
+  "openrig": "https://github.com/mvschwarz/openrig",
+  "openrigCommitRange": {
+    "from": "f5b62726ff759a857eeb76e2cbd654493fedba2f",
+    "to": "f5b62726ff759a857eeb76e2cbd654493fedba2f",
+    "inclusive": true
+  },
+  "tested": [
+    {
+      "role": "pinned",
+      "commit": "f5b62726ff759a857eeb76e2cbd654493fedba2f"
+    }
+  ]
+}

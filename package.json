@@ -11,6 +11,8 @@
   "scripts": {
     "build": "npm run build -w @openrig-whatsapp-relay/core && npm run build -w @openrig-whatsapp-relay/transport-baileys",
     "test": "vitest run",
+    "example:minimal": "node examples/minimal/run.mjs",
+    "test:example": "vitest run packages/core/test/minimal-example.test.ts",
     "check": "tsc --noEmit --project packages/core/tsconfig.json && tsc --noEmit --project packages/core/tsconfig.test.json && tsc --noEmit --project packages/transport-baileys/tsconfig.check.json && tsc --noEmit --project packages/transport-baileys/tsconfig.test.json"
   },
   "devDependencies": {
